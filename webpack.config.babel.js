@@ -43,7 +43,7 @@ export default (env) => {
     htmlWebpackPlugin,
     definePlugin,
     uglifyJSPlugin,
-    cleanWebpackPlugin
+    cleanWebpackPlugin,
   ];
 
   const files = isDev ? [
@@ -83,5 +83,5 @@ export default (env) => {
       filename: 'bundle.js',
     },
     plugins,
-  }
+  };
 };

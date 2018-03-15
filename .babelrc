@@ -1,24 +1,9 @@
 {
   "presets": [
     "react",
-    "stage-0",
-    [
-      "env",
-      {
-        "targets": {
-          "browsers": [
-            "last 2 versions"
-          ],
-          "node": "6.9"
-        }
-      }
-    ],
-    [
-      "es2015",
-      {
-        "modules": "commonjs"
-      }
-    ]
+    "es2015",
+    "flow",
+    "stage-0"
   ],
   "plugins": [
     "transform-class-properties",
@@ -31,6 +16,8 @@
           "./src"
         ],
         "alias": {
+          "containers": "./containers",
+          "routes": "./routes"
         }
       }
     ]
