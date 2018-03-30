@@ -14,11 +14,7 @@
       {
         "root": [
           "./src"
-        ],
-        "alias": {
-          "containers": "./containers",
-          "routes": "./routes"
-        }
+        ]
       }
     ]
   ]

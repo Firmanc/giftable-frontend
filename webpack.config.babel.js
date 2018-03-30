@@ -4,10 +4,17 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CleanWebpackPlugin from 'clean-webpack-plugin';
 import UglifyJSPlugin from 'uglifyjs-webpack-plugin';
 
+const commonsChunkPlugin = new webpack.optimize.CommonsChunkPlugin({
+  name: 'vendor',
+  minChunks(module) {
+    return module.context && ~module.context.indexOf('node_modules');
+  },
+});
+
 const htmlWebpackPlugin = new HtmlWebpackPlugin({
   inject: true,
   template: path.resolve(__dirname, 'dist/index.html'),
-  chunks: ['bundle', 'app'],
+  chunks: ['vendor', 'bundle'],
 });
 
 const hotModuleReplacementPlugin = new webpack.HotModuleReplacementPlugin();
@@ -37,10 +44,12 @@ export default (env) => {
 
   const plugins = isDev ? [
     hotModuleReplacementPlugin,
+    commonsChunkPlugin,
     htmlWebpackPlugin,
     definePlugin,
   ] : [
     htmlWebpackPlugin,
+    commonsChunkPlugin,
     definePlugin,
     uglifyJSPlugin,
     cleanWebpackPlugin,
@@ -56,7 +65,14 @@ export default (env) => {
   ];
 
   return {
-    entry: files,
+    entry: {
+      bundle: files,
+    },
+    output: {
+      path: path.resolve(__dirname, 'dist'),
+      filename: '[name].js',
+      publicPath: '/',
+    },
     module: {
       rules: [
         {
@@ -76,11 +92,6 @@ export default (env) => {
         path.resolve(__dirname, 'dist'),
         'node_modules',
       ],
-    },
-    output: {
-      path: path.resolve(__dirname, 'dist'),
-      publicPath: '/',
-      filename: 'bundle.js',
     },
     plugins,
   };
