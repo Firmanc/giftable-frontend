@@ -1,0 +1,52 @@
+/**
+* @param: $ButtonConfig(
+*   padding: Pixel,
+*   margin: Pixel,
+*   fontSize: Pixel,
+*   themeColor: Hex,
+* )
+**/
+
+@mixin button($ButtonConfig) {
+  $themeColor: getValue(themeColor, $ButtonConfig);
+
+  position: relative;
+  margin: getValue(margin, $ButtonConfig);
+  padding: getValue(padding, $ButtonConfig);
+  white-space: nowrap;
+  font: {
+    family: $linetoMedium;
+    size: getValue(fontSize, $ButtonConfig);
+  }
+  line-height: 1.5;
+  text: {
+    align: center;
+    transform: capitalize;
+  }
+  border-radius: 4px;
+  touch-action: manipulation;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+  &--primary {
+    border: 1px solid $themeColor;
+    color: $white;
+    background-color: $themeColor;
+
+    &:hover {
+      background-color: darken($themeColor, 5);
+    }
+  }
+
+  &--secondary {
+    border: 1px solid $grey;
+    color: $black;
+    background-color: $white;
+
+    &:hover {
+      border: 1px solid $themeColor;
+      color: $themeColor;
+    }
+  }
+}

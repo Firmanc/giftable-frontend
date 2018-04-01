@@ -1,4 +1,4 @@
 // @flow
 
-// eslint-disable-next-line import/prefer-default-export
 export { default as deepFreeze } from './deepFreeze';
+export { default as classModifiers } from './classModifiers';

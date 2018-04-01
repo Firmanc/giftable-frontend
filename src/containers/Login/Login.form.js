@@ -1,32 +1,36 @@
 // @flow
 
 import React, { type Element } from 'react';
+import { Button, TextInput } from 'components';
 import type { LoginFormProps } from './Login.props';
 
 export default (props: LoginFormProps): Element<'form'> => (
-  <form className="LoginForm" onSubmit={props.onSubmit}>
-    <div className="LoginForm__input">
-      <input
-        className="loginForm__email"
-        type="email"
-        value={props.email}
-        onChange={props.setEmail}
-      />
-      <input
-        className="loginForm__password"
-        type="password"
-        value={props.password}
-        onChange={props.setPassword}
-      />
-    </div>
-    <div className="LoginForm__submit">
-      <button
-        className="LoginForm__submitButton"
-        type="submit"
-        onClick={props.onSubmit}
-      >
-        login
-      </button>
-    </div>
+  <form
+    id="loginForm"
+    className="login__form"
+    onSubmit={props.onSubmit}
+  >
+    <TextInput
+      id="loginFormEmail"
+      type="email"
+      placeholder="Email Address"
+      value={props.email}
+      onChange={props.setEmail}
+    />
+    <TextInput
+      id="loginFormPassword"
+      type="password"
+      placeholder="Password"
+      value={props.password}
+      onChange={props.setPassword}
+    />
+    <Button
+      id="loginFormSubmit"
+      type="submit"
+      onClick={props.onSubmit}
+    >
+      log in
+    </Button>
+
   </form>
 );

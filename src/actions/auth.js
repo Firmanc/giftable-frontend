@@ -8,9 +8,12 @@ import {
 import { Action } from 'types/actions';
 import { Login, Auth } from 'types/auths';
 
-const login: Function = (formData: Login): Action<Login> => ({
+const login: Function = (formData: Login, componentId: string): Action<Login> => ({
   type: AUTH_LOGIN,
-  payload: formData,
+  payload: {
+    ...formData,
+    componentId,
+  },
 });
 
 const logout: Function = (): Action<void> => ({

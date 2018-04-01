@@ -20,7 +20,10 @@ export default compose(
     handleSubmit: (props: LoginProps): Function =>
       (event: SyntheticEvent<HTMLButtonElement>) => {
         event.preventDefault();
-        props.submitLogin(toLoginData(props));
+        props.submitLogin(
+          toLoginData(props),
+          props.componentId,
+        );
       },
   }),
 );

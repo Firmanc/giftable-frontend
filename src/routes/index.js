@@ -2,7 +2,11 @@
 
 import React, { type Element } from 'react';
 import { Switch } from 'react-router-dom';
-import { MainView, ProtectedView } from 'views';
+import {
+  MainView,
+  ProtectedView,
+  AuthenticationView,
+} from 'views';
 import {
   Login,
   Home,
@@ -17,7 +21,7 @@ const Routes: Function = (): Element<any> => (
       path="/"
       component={Home}
     />
-    <MainView
+    <AuthenticationView
       exact={true}
       path="/login"
       component={Login}

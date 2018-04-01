@@ -4,14 +4,16 @@ import {
   AUTH_SET,
   AUTH_LOGOUT,
 } from 'constants/auth';
+import { vector } from 'mori';
 import { REHYDRATE } from 'constants/persist';
 import { Action } from 'types/actions';
 import { Auth } from 'types/auths';
 import { deepFreeze } from 'utils';
 
 const INITIAL_STATE: Auth = {
-  currentUser: {},
+  user: {},
   token: '',
+  roles: vector(),
 };
 
 export default (

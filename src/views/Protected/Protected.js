@@ -6,7 +6,7 @@ import React, {
 } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-const Main: Function = ({
+const Protected: Function = ({
   component: Component,
   isAuthenticated,
   ...rest
@@ -23,10 +23,9 @@ const Main: Function = ({
           pathname: '/login',
           state: { from: matchProps.location },
         }}
-
       />
     }
   />
 );
 
-export default Main;
+export default Protected;

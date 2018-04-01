@@ -1,0 +1,55 @@
+/**
+* @param: $TextInputConfig(
+*   inputPadding: Pixel,
+*   fontSize: Pixel,
+*   margin: Pixel,
+* )
+**/
+
+@mixin textInput($TextInputConfig) {
+  margin: getValue(margin, $TextInputConfig);
+
+  &__input {
+      box-sizing: border-box;
+      width: 100%;
+      padding: getValue(inputPadding, $TextInputConfig);
+      font: {
+        family: $linetoBook;
+        size: getValue(fontSize, $TextInputConfig);
+      }
+      line-height: 1.5;
+      color: $black;
+      background-color: $white;
+      border-radius: 4px;
+      transition: all .3s;
+
+    &--normal {
+      border: 1px solid $grey;
+    }
+
+    &--error {
+      border: 1px solid $red;
+    }
+
+    &:hover {
+      border: 1px solid $lightBlue;
+    }
+
+    &:focus {
+      border-color: #40a9ff;
+      outline: 0;
+      box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+    }
+  }
+
+  &__error {
+    $FormErrorConfig: (
+      fontSize: getValue(fontSize, $TextInputConfig),
+      margin: 2px,
+    );
+
+    position: absolute;
+
+    @include formError($FormErrorConfig);
+  }
+}
