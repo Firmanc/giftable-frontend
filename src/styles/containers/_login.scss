@@ -1,0 +1,54 @@
+.login {
+  padding: {
+    top: 50px;
+    bottom: 50px;
+  }
+  text-align: center;
+
+  &__header {
+    text-transform: capitalize;
+    margin: {
+      bottom: 45px;
+      top: 20px;
+    }
+    font: {
+      family: $linetoBook;
+      size: 32px;
+    }
+  }
+
+  .textInput {
+    $TextInputConfig: (
+      inputPadding: 15px,
+      fontSize: 18px,
+      margin: 20px auto,
+    );
+
+    @include textInput($TextInputConfig);
+  }
+
+  .card {
+    $CardConfig: (
+      margin: 0px auto,
+      padding: 20px 40px,
+    );
+
+    width: 450px;
+
+    @include card($CardConfig);
+  }
+
+  .button {
+    $ButtonConfig: (
+      margin: 20px auto,
+      padding: 14px,
+      fontSize: 18px,
+      themeColor: $green,
+    );
+
+    display: block;
+    width: 100%;
+
+    @include button($ButtonConfig);
+  }
+}

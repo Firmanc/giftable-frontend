@@ -1,0 +1,17 @@
+/**
+* @param: $CardConfig(
+*   padding: Pixel,
+*   margin: Pixel,
+* )
+**/
+
+@mixin card($CardConfig) {
+  padding: getValue(padding, $CardConfig);
+  margin: getValue(margin, $CardConfig);
+  box-sizing: border-box;
+  background-color: $white;
+  box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 7px;
+  overflow: auto;
+  border: 1px solid $whiteGrey;
+}
