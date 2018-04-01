@@ -36,9 +36,7 @@ export default (env) => {
 
   const definePlugin = new webpack.DefinePlugin({
     'process.env.NODE_ENV': isDev ? '"development"' : '"production"',
-    'process.env.API_URL': isDev
-      ? '"http://localhost:3000"'
-      : '"http://localhost:3000"',
+    'process.env.API_URL': '"http://backend.giftableapp.co"',
     'process.env.API_VERSION': '"v1"',
   });
 

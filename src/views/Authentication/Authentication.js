@@ -16,15 +16,17 @@ const Authentication: Function = ({
 }): Route => (
   <Route
     {...rest}
-    render={(matchProps: any): Element<any> => isAuthenticated
-      ? <Redirect
-        to={{
-          pathname: '/',
-          state: { from: matchProps.location },
-        }}
-      />
-      : <Component {...matchProps} />
-    }
+    render={(matchProps: any): Element<any> => {
+      const { from }: { from: Object } = matchProps.location.state
+        || { from: { pathname: '/' } };
+
+      return isAuthenticated
+        ? <Redirect
+          to={from}
+        />
+        : <Component {...matchProps} />;
+      }
+  }
   />
 );
 

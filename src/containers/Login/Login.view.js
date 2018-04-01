@@ -7,6 +7,7 @@ import type { LoginProps } from './Login.props';
 
 export default (props: LoginProps): Element<'div'> => (
   <div id={props.id} className="login">
+    {props.error && <div>{props.error}</div>}
     <Card>
       <h1 className="login__header"> log in </h1>
       <LoginForm

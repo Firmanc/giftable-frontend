@@ -9,6 +9,7 @@ export type LoginProps = {
   setPassword: Function,
   submitLogin: Function,
   componentId: string,
+  error: string,
 };
 
 export type LoginFormProps = {
