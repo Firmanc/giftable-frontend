@@ -13,7 +13,7 @@ const commonsChunkPlugin = new webpack.optimize.CommonsChunkPlugin({
 
 const htmlWebpackPlugin = new HtmlWebpackPlugin({
   inject: true,
-  template: path.resolve(__dirname, 'dist/index.html'),
+  template: path.resolve(__dirname, 'index.html'),
   chunks: ['vendor', 'bundle'],
 });
 
@@ -36,9 +36,7 @@ export default (env) => {
 
   const definePlugin = new webpack.DefinePlugin({
     'process.env.NODE_ENV': isDev ? '"development"' : '"production"',
-    'process.env.API_URL': isDev
-      ? '"http://localhost:3000"'
-      : '"http://localhost:3000"',
+    'process.env.API_URL': '"http://backend.giftableapp.co"',
     'process.env.API_VERSION': '"v1"',
   });
 
@@ -48,11 +46,11 @@ export default (env) => {
     htmlWebpackPlugin,
     definePlugin,
   ] : [
-    htmlWebpackPlugin,
+    cleanWebpackPlugin,
     commonsChunkPlugin,
+    htmlWebpackPlugin,
     definePlugin,
     uglifyJSPlugin,
-    cleanWebpackPlugin,
   ];
 
   const files = isDev ? [
