@@ -13,7 +13,7 @@ const commonsChunkPlugin = new webpack.optimize.CommonsChunkPlugin({
 
 const htmlWebpackPlugin = new HtmlWebpackPlugin({
   inject: true,
-  template: path.resolve(__dirname, 'dist/index.html'),
+  template: path.resolve(__dirname, 'index.html'),
   chunks: ['vendor', 'bundle'],
 });
 
@@ -46,11 +46,11 @@ export default (env) => {
     htmlWebpackPlugin,
     definePlugin,
   ] : [
-    htmlWebpackPlugin,
+    cleanWebpackPlugin,
     commonsChunkPlugin,
+    htmlWebpackPlugin,
     definePlugin,
     uglifyJSPlugin,
-    cleanWebpackPlugin,
   ];
 
   const files = isDev ? [
