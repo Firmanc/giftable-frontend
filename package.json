@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --env prod --config webpack.config.babel.js && npm run css",
-    "deploy": "aws s3 sync dist s3://giftableapp",
+    "deploy": "aws s3 sync dist s3://www.giftableapp.co",
     "dev": "yarn && yarn css && webpack-dev-server --progress --colors --env dev --watch --config ./webpack.config.babel.js & nodemon -e scss -x \"npm run css\"",
     "sass": "node-sass --include scss src/styles/styles.scss -o dist",
     "autoprefixer": "postcss --use autoprefixer -b \"last 2 versions\" < dist/styles.css",
