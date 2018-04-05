@@ -1,7 +1,7 @@
 // @flow
 
-import makeGetLogErrorById from './makeGetLogErrorById';
+import makeGetLogById from './makeGetLogById';
 
 export default ({
-  makeGetLogErrorById,
+  makeGetLogById,
 });
