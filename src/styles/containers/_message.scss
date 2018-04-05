@@ -1,18 +1,28 @@
 .message {
   $contentPadding: 10px 15px;
-
-  padding: {
-    left: 20px;
-    right: 20px;
-  }
   display: flex;
   position: absolute;
   top: 0;
+  left: 0;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   background-color: $white;
   box-shadow: 0 12px 50px 0 rgba(0, 0, 0, 0.05);
+
+  @include mediaLarge() {
+    padding: {
+      left: 40px;
+      right: 40px;
+    }
+  }
+
+  @include mediaSmall() {
+    padding: {
+      left: 5px;
+      right: 5px;
+    }
+  }
 
   &--error {
     .message__icon {
@@ -50,15 +60,24 @@
   }
 
   &__text {
-    padding: $contentPadding;
     margin: 0;
     flex: 1;
-    font-size: 16px;
+
+    @include mediaLarge() {
+      padding: $contentPadding;
+      font-size: 16px;
+    }
+
+    @include mediaSmall() {
+      padding: 5px;
+      font-size: 14px;
+    }
   }
 
   &__closeButton {
     padding: $contentPadding;
     border: none;
+    background-color: transparent;
     cursor: pointer;
     font-size: 14px;
   }
