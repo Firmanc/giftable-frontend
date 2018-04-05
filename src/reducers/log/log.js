@@ -1,9 +1,9 @@
 // @flow
 
-import { LOG_ADD, LOG_POP } from 'constants/log';
+import { LOG_ADD, LOG_REMOVE } from 'constants/log';
 import {
   list,
-  rest,
+  filter,
   conj,
 } from 'mori';
 import { Action } from 'types/actions';
@@ -18,8 +18,12 @@ export default (
   switch (action.type) {
     case LOG_ADD:
       return conj(state, action.payload);
-    case LOG_POP:
-      return rest(state);
+    case LOG_REMOVE:
+      return filter(
+        (log: Log): boolean =>
+          log.componentId !== action.payload.componentId,
+        state,
+      );
     default:
       return state;
   }

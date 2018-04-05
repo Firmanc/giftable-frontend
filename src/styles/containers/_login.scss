@@ -1,9 +1,19 @@
 .login {
-  padding: {
-    top: 50px;
-    bottom: 50px;
+  @include mediaLarge() {
+    padding: {
+      top: 100px;
+      bottom: 100px;
+    }
   }
-  text-align: center;
+
+  @include mediaSmall() {
+    padding: {
+      top: 100px;
+      bottom: 100px;
+      left: 10px;
+      right: 10px;
+    }
+  }
 
   &__header {
     text-transform: capitalize;
@@ -11,44 +21,88 @@
       bottom: 45px;
       top: 20px;
     }
-    font: {
-      family: $linetoBook;
-      size: 32px;
+    font-family: $linetoBook;
+    text-align: center;
+
+    @include mediaLarge() {
+      font-size: 32px;
+    }
+
+    @include mediaSmall() {
+      font-size: 28px;
     }
   }
 
   .textInput {
-    $TextInputConfig: (
-      inputPadding: 15px,
-      fontSize: 18px,
-      margin: 20px auto,
-    );
+    @include mediaLarge() {
+      $TextInputConfig: (
+        inputPadding: 15px,
+        fontSize: 18px,
+        margin: 20px auto,
+      );
+  
+      @include textInput($TextInputConfig);
+    }
 
-    @include textInput($TextInputConfig);
+    @include mediaSmall() {
+      $TextInputConfig: (
+        inputPadding: 13px,
+        fontSize: 16px,
+        margin: 20px auto,
+      );
+  
+      @include textInput($TextInputConfig);
+    }
   }
 
   .card {
-    $CardConfig: (
-      margin: 0px auto,
-      padding: 20px 40px,
-    );
+    @include mediaLarge() {
+      $CardConfig: (
+        margin: 0px auto,
+        padding: 20px 40px,
+      );
 
-    width: 450px;
+      width: 450px;
+    
+      @include card($CardConfig);
+    }
 
-    @include card($CardConfig);
+    @include mediaSmall() {
+      $CardConfig: (
+        margin: 0px auto,
+        padding: 15px 15px,
+      );
+
+      width: 100%;
+    
+      @include card($CardConfig);
+    }
   }
 
   .button {
-    $ButtonConfig: (
-      margin: 20px auto,
-      padding: 14px,
-      fontSize: 18px,
-      themeColor: $green,
-    );
-
     display: block;
     width: 100%;
 
-    @include button($ButtonConfig);
+    @include mediaLarge() {
+      $ButtonConfig: (
+        margin: 20px auto,
+        padding: 14px,
+        fontSize: 18px,
+        themeColor: $green,
+      );
+
+      @include button($ButtonConfig);
+    }
+
+    @include mediaSmall() {
+      $ButtonConfig: (
+        margin: 20px auto,
+        padding: 12px,
+        fontSize: 16px,
+        themeColor: $green,
+      );
+
+      @include button($ButtonConfig);
+    }
   }
 }
