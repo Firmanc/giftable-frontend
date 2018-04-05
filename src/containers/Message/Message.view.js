@@ -18,7 +18,12 @@ export default (props: MessageProps): ?Element<'div'> =>
     <div className={`message message--${actionTypesGenerator(props.log.type)}`}>
       <i className="message__icon" />
       <p className="message__text">{props.log.message}</p>
-      <button className="message__closeButton">
+      <button
+        className="message__closeButton"
+        onClick={() => {
+          props.removeMessage(props.log);
+        }}
+      >
         <i className="message__closeIcon" />
       </button>
     </div>

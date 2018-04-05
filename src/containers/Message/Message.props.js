@@ -7,5 +7,6 @@ export type MessageProps = {
   },
   componentId: string;
   setShow: Function;
+  removeMessage: Function;
   show: boolean;
 };

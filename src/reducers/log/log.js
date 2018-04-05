@@ -2,24 +2,28 @@
 
 import { LOG_ADD, LOG_REMOVE } from 'constants/log';
 import {
-  set,
-  disj,
+  list,
+  filter,
   conj,
 } from 'mori';
 import { Action } from 'types/actions';
 import { Log } from 'types/logs';
 
-const INITIAL_STATE: set<Log> = set();
+const INITIAL_STATE: list<Log> = list();
 
 export default (
-  state: set<Log> = INITIAL_STATE,
+  state: list<Log> = INITIAL_STATE,
   action: Action<Log>,
-): set<Log> => {
+): list<Log> => {
   switch (action.type) {
     case LOG_ADD:
       return conj(state, action.payload);
     case LOG_REMOVE:
-      return disj(state, action.payload);
+      return filter(
+        (log: Log): boolean =>
+          log.componentId !== action.payload.componentId,
+        state,
+      );
     default:
       return state;
   }
