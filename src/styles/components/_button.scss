@@ -3,12 +3,12 @@
 *   padding: Pixel,
 *   margin: Pixel,
 *   fontSize: Pixel,
-*   themeColor: Hex,
+*   color: Hex,
 * )
 **/
 
 @mixin button($ButtonConfig) {
-  $themeColor: getValue(themeColor, $ButtonConfig);
+  $color: getValue(color, $ButtonConfig);
 
   position: relative;
   margin: getValue(margin, $ButtonConfig);
@@ -30,23 +30,24 @@
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 
   &--primary {
-    border: 1px solid $themeColor;
+    border: 1px solid $color;
     color: $white;
-    background-color: $themeColor;
+    background-color: $color;
 
     &:hover {
-      background-color: darken($themeColor, 5);
+      background-color: darken($color, 5);
     }
   }
 
   &--secondary {
-    border: 1px solid $grey;
-    color: $black;
+    border: 1px solid $color;
+    color: $color;
     background-color: $white;
 
     &:hover {
-      border: 1px solid $themeColor;
-      color: $themeColor;
+      border: 1px solid $color;
+      color: $white;
+      background-color: $color;
     }
   }
 }
