@@ -1,0 +1,102 @@
+.topNav {
+  margin: 0 auto;
+  max-width: $bp-xmedium;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &--auth {
+    padding: 13.5px 3px;
+  }
+
+  &--unauth {
+    padding: 15px 3px;
+  }
+
+  &__rightNav {
+    display: flex;
+    align-items: center;
+  }
+
+  &__link {
+    margin: 0 15px;
+    color: $black;
+    font: {
+      size: 16px;
+      family: $linetoMedium;
+    }
+    text: {
+      decoration: none;
+      transform: capitalize;
+    }
+    letter-spacing: 0.5px;
+    transition: color 0.25s;
+
+    &:hover {
+      color: $blue;
+    }
+  }
+
+  &__avatarWrapper {
+    &--hideMenu {
+      .profileTile {
+        opacity: 0;
+        visibility: hidden;
+        transform: translate3d(0, -10px, 0);
+      }
+    }
+  
+    &--showMenu {
+      .profileTile {
+        opacity: 1;
+        visibility: visible;
+        transform: translate3d(0, 5px, 0);
+      }
+    }
+  }
+
+  &__avatar {
+    margin: 0 15px;
+    padding: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+
+    &__image {
+      margin: 0 10px;
+      border-radius: 50%;
+      height: 38px;
+      width: 38px;
+    }
+
+    &__arrow {
+      font-size: 16px;
+
+      @extend .fas;
+      @extend .fa-angle-down;
+    }
+  }
+  
+  .profileTile {
+    z-index: 5;
+    top: 70px;
+    right: 3%;
+    position: absolute;
+    transition: all 0.25s ease-in-out;
+  }
+
+  .button {
+    $ButtonConfig: (
+      margin: 0 15px,
+      padding: 6px 16px,
+      fontSize: 14px,
+      color: $blue,
+    );
+
+    @include button($ButtonConfig);
+  }
+}

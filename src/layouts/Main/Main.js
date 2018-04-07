@@ -4,6 +4,7 @@ import React, {
   type Element,
   type StatelessFunctionalComponent,
 } from 'react';
+import { Header } from 'containers';
 import { Route } from 'react-router-dom';
 
 const Main: Function = ({
@@ -15,8 +16,11 @@ const Main: Function = ({
   <Route
     {...rest}
     render={(matchProps: any): Element<any> => (
-      <div className="mainViews">
-        <Component {...matchProps} />
+      <div className="mainLayout">
+        <Header />
+        <div className="mainLayout__content">
+          <Component {...matchProps} />
+        </div>
       </div>
     )}
   />

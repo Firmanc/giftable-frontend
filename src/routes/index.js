@@ -3,34 +3,34 @@
 import React, { type Element } from 'react';
 import { Switch } from 'react-router-dom';
 import {
-  MainView,
-  ProtectedView,
-  AuthenticationView,
-} from 'views';
+  MainLayout,
+  ProtectedLayout,
+  AuthLayout,
+} from 'layouts';
 import {
   Login,
   Home,
-  NotFound,
 } from 'containers';
+import { NotFound } from 'components';
 import DashboardRoutes from './Dashboard';
 
 const Routes: Function = (): Element<any> => (
   <Switch>
-    <MainView
+    <MainLayout
       exact={true}
       path="/"
       component={Home}
     />
-    <AuthenticationView
+    <AuthLayout
       exact={true}
       path="/login"
       component={Login}
     />
-    <ProtectedView
+    <ProtectedLayout
       path="/dashboard"
       component={DashboardRoutes}
     />
-    <MainView
+    <MainLayout
       component={NotFound}
     />
   </Switch>

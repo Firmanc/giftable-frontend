@@ -9,7 +9,7 @@ export default (props: ButtonProps): Element<'button'> => (
     id={props.id}
     type={props.type || 'button'}
     className={`button button${props.secondary
-      ? '--secondary' 
+      ? '--secondary'
       : '--primary'} ${classModifiers('button', props.classModifiers)}`}
     onClick={props.onClick}
   >

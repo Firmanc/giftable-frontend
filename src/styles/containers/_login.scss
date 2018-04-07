@@ -1,4 +1,6 @@
 .login {
+  position: relative;
+
   @include mediaLarge() {
     padding: {
       top: 100px;
@@ -88,7 +90,7 @@
         margin: 20px auto,
         padding: 14px,
         fontSize: 18px,
-        themeColor: $green,
+        color: $green,
       );
 
       @include button($ButtonConfig);
@@ -99,7 +101,7 @@
         margin: 20px auto,
         padding: 12px,
         fontSize: 16px,
-        themeColor: $green,
+        color: $green,
       );
 
       @include button($ButtonConfig);
