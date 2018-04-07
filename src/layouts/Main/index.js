@@ -1,3 +1,3 @@
 // @flow
 
-export { default } from './Main';
+export { default } from './Main.view';
