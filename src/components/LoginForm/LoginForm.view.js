@@ -2,7 +2,7 @@
 
 import React, { type Element } from 'react';
 import { Button, TextInput } from 'components';
-import type { LoginFormProps } from './Login.props';
+import type { LoginFormProps } from './LoginForm.props';
 
 export default (props: LoginFormProps): Element<'form'> => (
   <form

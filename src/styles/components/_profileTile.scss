@@ -1,0 +1,74 @@
+.profileTile {
+  display: inline-block;
+  text-align: left;
+
+  &__header {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid $grey;
+  }
+
+  &__avatar {
+    margin: 6px 9px;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+  }
+
+  &__userName {
+    margin: {
+      bottom: 5px;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+    font-family: $linetoBook;
+    font-size: 15px;
+  }
+
+  &__userEmail {
+    margin: 0;
+    font: {
+      size: 12px;
+      weight: 200;
+    }
+    color: $darkGrey;
+  }
+
+  &__menu {
+    font-family: $linetoBook;
+  }
+
+  &__logoutButton {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    text-align: inherit;
+    outline: 0;
+  }
+
+  &__logoutButton,
+  &__link {
+    display: block;
+    padding: 10px 15px;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $whiteGrey;
+    }
+  }
+
+  .card {
+    $CardConfig: (
+      margin: 0px auto,
+      padding: 0,
+    );
+  
+    min-width: 220px;
+  
+    @include card($CardConfig);
+  }
+}

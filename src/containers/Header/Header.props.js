@@ -1,5 +1,13 @@
 // @flow
 
+import type { UserTypes } from 'types/users';
+
 export type HeaderProps = {
-  title?: string,
+  isAuthenticated: boolean,
+  history: Object,
+  currentUser: UserTypes,
+  onLogout: Function,
+  logout: Function,
+  showMenu: boolean,
+  setShowMenu: Function,
 };

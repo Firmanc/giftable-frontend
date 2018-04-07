@@ -6,10 +6,17 @@ import type { HeaderProps } from './Header.props';
 
 export default (props: HeaderProps): Element<'header'> => (
   <header className="header">
-    {props.title}
     <TopNav
-      title="Giftable"
-      onClick={() => {}}
+      currentUser={props.currentUser}
+      toSignUpPage={() => {
+        props.history.push('/signup');
+      }}
+      isLoggedIn={props.isAuthenticated}
+      logout={props.onLogout}
+      showMenu={props.showMenu}
+      setShowMenu={() => {
+        props.setShowMenu(!props.showMenu);
+      }}
     />
   </header>
 );

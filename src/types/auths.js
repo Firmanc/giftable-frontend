@@ -2,6 +2,7 @@
 
 import type { vector } from 'mori';
 import { RoleType } from './roles';
+import { UserTypes } from './users';
 
 export interface Login {
   email: string,
@@ -16,7 +17,7 @@ export interface LoginReq {
 
 
 export interface Auth {
-  user: Object,
+  user: UserTypes,
   token: string,
   roles: vector<RoleType>,
 }

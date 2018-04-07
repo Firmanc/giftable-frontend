@@ -10,7 +10,7 @@ import { Action } from 'types/actions';
 import { Auth } from 'types/auths';
 import { deepFreeze } from 'utils';
 
-const INITIAL_STATE: Auth = {
+const INITIAL_STATE: Object = {
   user: {},
   token: '',
   roles: vector(),
