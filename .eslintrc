@@ -4,10 +4,6 @@
     "browser": true,
     "jest/globals": true
   },
-  "globals": {
-    "FB": true,
-    "auth2": true
-  },
   "plugins": [
     "react",
     "flowtype",

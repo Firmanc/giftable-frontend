@@ -9,7 +9,9 @@ import {
 } from 'layouts';
 import {
   Login,
+  Signup,
   Home,
+  About,
 } from 'containers';
 import { NotFound } from 'components';
 import DashboardRoutes from './Dashboard';
@@ -21,10 +23,20 @@ const Routes: Function = (): Element<any> => (
       path="/"
       component={Home}
     />
+    <MainLayout
+      exact={true}
+      path="/about"
+      component={About}
+    />
     <AuthLayout
       exact={true}
       path="/login"
       component={Login}
+    />
+    <AuthLayout
+      exact={true}
+      path="/signup"
+      component={Signup}
     />
     <ProtectedLayout
       path="/dashboard"

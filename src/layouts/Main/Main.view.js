@@ -18,9 +18,9 @@ const Main: Function = ({
     render={(matchProps: any): Element<any> => (
       <div className="mainLayout">
         <Header />
-        <div className="mainLayout__content">
+        <main className="mainLayout__main">
           <Component {...matchProps} />
-        </div>
+        </main>
       </div>
     )}
   />

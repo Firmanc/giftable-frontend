@@ -3,9 +3,9 @@
 import React, { type Element } from 'react';
 
 export default (): Element<'div'> => (
-  <div className="home">
-    <h1 className="home__header">
-      Home
+  <div className="about">
+    <h1 className="about__header">
+      About
     </h1>
   </div>
 );

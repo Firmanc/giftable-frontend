@@ -1,14 +1,14 @@
 .login {
   position: relative;
 
-  @include mediaLarge() {
+  @include size-for(tablet-up) {
     padding: {
       top: 100px;
       bottom: 100px;
     }
   }
 
-  @include mediaSmall() {
+  @include size-for(phone-only) {
     padding: {
       top: 100px;
       bottom: 100px;
@@ -26,17 +26,17 @@
     font-family: $linetoBook;
     text-align: center;
 
-    @include mediaLarge() {
+    @include size-for(tablet-up) {
       font-size: 32px;
     }
 
-    @include mediaSmall() {
+    @include size-for(phone-only) {
       font-size: 28px;
     }
   }
 
   .textInput {
-    @include mediaLarge() {
+    @include size-for(tablet-up) {
       $TextInputConfig: (
         inputPadding: 15px,
         fontSize: 18px,
@@ -46,7 +46,7 @@
       @include textInput($TextInputConfig);
     }
 
-    @include mediaSmall() {
+    @include size-for(phone-only) {
       $TextInputConfig: (
         inputPadding: 13px,
         fontSize: 16px,
@@ -58,7 +58,7 @@
   }
 
   .card {
-    @include mediaLarge() {
+    @include size-for(tablet-up) {
       $CardConfig: (
         margin: 0px auto,
         padding: 20px 40px,
@@ -69,7 +69,7 @@
       @include card($CardConfig);
     }
 
-    @include mediaSmall() {
+    @include size-for(phone-only) {
       $CardConfig: (
         margin: 0px auto,
         padding: 15px 15px,
@@ -85,7 +85,7 @@
     display: block;
     width: 100%;
 
-    @include mediaLarge() {
+    @include size-for(tablet-up) {
       $ButtonConfig: (
         margin: 20px auto,
         padding: 14px,
@@ -96,7 +96,7 @@
       @include button($ButtonConfig);
     }
 
-    @include mediaSmall() {
+    @include size-for(phone-only) {
       $ButtonConfig: (
         margin: 20px auto,
         padding: 12px,

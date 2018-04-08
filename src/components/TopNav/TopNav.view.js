@@ -37,6 +37,7 @@ const AuthNav: Function = (props: TopNavProps): Element<'nav'> => (
         : 'hideMenu'}`}
     >
       <button
+        id="openProfileMenuBtn"
         className="topNav__avatar"
         onClick={props.setShowMenu}
         type="button"
@@ -58,8 +59,8 @@ const AuthNav: Function = (props: TopNavProps): Element<'nav'> => (
   </nav>
 );
 
-export default (props: TopNavProps): Element<'section'> => (
-  <section className={`topNav topNav--${props.isLoggedIn
+export default (props: TopNavProps): Element<'div'> => (
+  <div className={`topNav topNav--${props.isLoggedIn
     ? 'auth'
     : 'unauth'}`}
   >
@@ -76,5 +77,5 @@ export default (props: TopNavProps): Element<'section'> => (
       ? <AuthNav {...props} />
       : <UnauthNav {...props} />
     }
-  </section>
+  </div>
 );

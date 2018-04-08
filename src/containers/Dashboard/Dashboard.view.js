@@ -1,11 +1,11 @@
 // @flow
 
 import React, { type Element } from 'react';
-import type { DashboardProps } from './Dashboard.props';
 
-export default (props: DashboardProps): Element<'div'> => (
+export default (): Element<'div'> => (
   <div className="dashboard">
-    {props.title}
-    Dashboard
+    <h1 className="dashboard__header">
+      Dashboard
+    </h1>
   </div>
 );
