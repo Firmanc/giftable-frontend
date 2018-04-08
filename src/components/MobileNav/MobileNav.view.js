@@ -33,6 +33,7 @@ export default (props: MobileNavProps): Element<'div'> => (
         setShowMenu={props.setShowMenu}
         currentUser={props.currentUser}
         isLoggedIn={props.isLoggedIn}
+        logout={props.logout}
       />
     </div>
   </div>

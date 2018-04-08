@@ -4,7 +4,7 @@ import React, { type Element } from 'react';
 import { Link } from 'react-router-dom';
 import type { MobileMenuProps } from './MobileMenu.props';
 
-const UnauthNav: Function = (props: MobileMenuProps): Element<div> => (
+const UnauthNav: Function = (props: MobileMenuProps): Element<'div'> => (
   <div className="mobileMenu">
     <header className="mobileMenu__header">
       <div className="mobileMenu__header__closeWrapper">
@@ -43,7 +43,7 @@ const UnauthNav: Function = (props: MobileMenuProps): Element<div> => (
   </div>
 );
 
-const AuthNav: Function = (props: MobileMenuProps): Element<div> => (
+const AuthNav: Function = (props: MobileMenuProps): Element<'div'> => (
   <div className="mobileMenu">
     <header className="mobileMenu__header">
       <div className="mobileMenu__header__closeWrapper">
@@ -57,22 +57,39 @@ const AuthNav: Function = (props: MobileMenuProps): Element<div> => (
       </div>
       <div className="mobileMenu__header__profileWrapper">
         <img
-          className="profileTile__avatar"
+          className="mobileMenu__avatar"
           src={props.currentUser.profileImage
             ? props.currentUser.profileImage
             : 'assets/images/default-avatar.png'}
           alt={props.currentUser.firstName}
         />
-        <span className="profileTile__userDetail">
-          <p className="profileTile__userName">
+        <span className="mobileMenu__userDetail">
+          <p className="mobileMenu__userDetail__name">
             {props.currentUser.fullName}
           </p>
-          <p className="profileTile__userEmail">
+          <p className="mobileMenu__userDetail__email">
             {props.currentUser.email}
           </p>
         </span>
       </div>
     </header>
+    <nav className="mobileMenu__authNav">
+      <Link
+        className="mobileMenu__link"
+        to="/"
+        onClick={props.setShowMenu}
+      >
+        create gift
+      </Link>
+    </nav>
+    <footer className="mobileMenu__footer">
+      <button
+        className="mobileMenu__logoutButton"
+        onClick={props.logout}
+      >
+        log out <i className="mobileMenu__logoutButton__icon" />
+      </button>
+    </footer>
   </div>
 );
 

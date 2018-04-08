@@ -8,7 +8,7 @@ import {
 } from 'recompose';
 import debounce from 'lodash/debounce';
 
-const DESKTOP_BREAKPOINT: number = 768;
+const DESKTOP_BREAKPOINT: number = 765;
 
 function calcIsMobile(windowWidth: number, breakpoint: number): boolean {
   return windowWidth < breakpoint;

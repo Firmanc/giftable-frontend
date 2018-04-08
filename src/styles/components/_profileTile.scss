@@ -16,24 +16,26 @@
     width: 30px;
   }
 
-  &__userName {
-    margin: {
-      bottom: 5px;
-      top: 0;
-      left: 0;
-      right: 0;
+  &__userDetail {
+    &__name {
+      margin: {
+        bottom: 5px;
+        top: 0;
+        left: 0;
+        right: 0;
+      }
+      font-family: $linetoBook;
+      font-size: 15px;
     }
-    font-family: $linetoBook;
-    font-size: 15px;
-  }
-
-  &__userEmail {
-    margin: 0;
-    font: {
-      size: 12px;
-      weight: 200;
+  
+    &__email {
+      margin: 0;
+      font: {
+        size: 12px;
+        weight: 200;
+      }
+      color: $darkGrey;
     }
-    color: $darkGrey;
   }
 
   &__menu {

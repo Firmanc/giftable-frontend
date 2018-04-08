@@ -7,4 +7,5 @@ export type MobileNavProps = {
   showMenu: boolean,
   currentUser: UserTypes,
   isLoggedIn: boolean,
+  logout: Function,
 };

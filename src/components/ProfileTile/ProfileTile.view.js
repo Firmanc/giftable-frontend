@@ -17,10 +17,10 @@ export default (props: ProfileTileProps): Element<'div'> => (
             alt={props.currentUser.firstName}
           />
           <span className="profileTile__userDetail">
-            <p className="profileTile__userName">
+            <p className="profileTile__userDetail__name">
               {props.currentUser.fullName}
             </p>
-            <p className="profileTile__userEmail">
+            <p className="profileTile__userDetail__email">
               {props.currentUser.email}
             </p>
           </span>

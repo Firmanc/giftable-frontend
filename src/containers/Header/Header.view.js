@@ -12,6 +12,7 @@ export default (props: HeaderProps): Element<'header'> => (
         showMenu={props.showMenu}
         currentUser={props.currentUser}
         isLoggedIn={props.isAuthenticated}
+        logout={props.onLogout}
       />
     ) : (
       <TopNav

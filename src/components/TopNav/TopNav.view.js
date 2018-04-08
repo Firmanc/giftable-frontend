@@ -11,7 +11,7 @@ const UnauthNav: Function = (props: TopNavProps): Element<'nav'> => (
       About
     </Link>
     <Link className="topNav__link" to="/login">
-      Log in
+      Login
     </Link>
     <Button
       id="navSignupBtn"
