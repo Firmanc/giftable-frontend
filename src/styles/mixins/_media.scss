@@ -1,11 +1,15 @@
-@mixin mediaSmall() {
-  @media (max-width: $bp-medium - 1) {
-    @content;
-  }
-}
-
-@mixin mediaLarge() {
-  @media (min-width: $bp-medium) {
-    @content;
+@mixin size-for($size) {
+  @if $size == phone-only {
+    @media (max-width: $bp-small - 1) {
+      @content;
+    }
+  } @else if $size == tablet-up {
+    @media (min-width: $bp-small) {
+      @content;
+    }
+  } @else if $size == desktop-up {
+    @media (min-width: $bp-medium) {
+      @content;
+    }
   }
 }

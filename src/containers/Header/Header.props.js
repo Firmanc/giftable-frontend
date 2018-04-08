@@ -10,4 +10,6 @@ export type HeaderProps = {
   logout: Function,
   showMenu: boolean,
   setShowMenu: Function,
+  isMobile: boolean,
+  handleShowMenu: Function,
 };

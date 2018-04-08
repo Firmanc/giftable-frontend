@@ -1,0 +1,52 @@
+.mobileNav {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__rightNav {
+    display: flex;
+    align-items: center;
+  }
+
+  &__mobileMenu {
+    z-index: 5;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    right: 0;
+    transition: transform 0.25s ease-in-out;
+
+    @include size-for(phone-only) {
+      width: 100vw;
+    }
+
+    @include size-for(tablet-up) {
+      width: 50vw;
+    }
+
+    &--hideMenu {
+      transform: translate3d(100%, 0, 0);
+    }
+
+    &--showMenu {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  &__menuButton {
+    margin: 0 6px;
+    padding: 8px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  &__menuIcon {
+    font-size: 30px;
+
+    @extend .fas;
+    @extend .fa-bars;
+  }
+}

@@ -1,0 +1,31 @@
+.mobileMenu {
+  height: 100%;
+  background-color: $darkBlue;
+  padding: 20px;
+
+  &__closeIcon {
+    font-size: 35px;
+    color: $white;
+
+    @extend .fas;
+    @extend .fa-times;
+  }
+
+  &__nav {
+    padding: 30px;
+  }
+
+  &__link {
+    display: block;
+    margin: 20px 0;
+    color: $white;
+    font: {
+      size: 25px;
+      family: $linetoBold;
+    }
+    text: {
+      transform: capitalize;
+      decoration: none;
+    }
+  }
+}
