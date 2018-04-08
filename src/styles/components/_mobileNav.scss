@@ -16,7 +16,7 @@
     height: 100%;
     top: 0;
     right: 0;
-    transition: transform 0.25s ease-in-out;
+    transition: transform 0.5s ease-in-out;
 
     @include size-for(phone-only) {
       width: 100vw;
@@ -41,6 +41,7 @@
     border: none;
     background-color: transparent;
     cursor: pointer;
+    outline: none;
   }
 
   &__menuIcon {
