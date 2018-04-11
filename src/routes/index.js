@@ -7,12 +7,7 @@ import {
   ProtectedLayout,
   AuthLayout,
 } from 'layouts';
-import {
-  Login,
-  Signup,
-  Home,
-  About,
-} from 'containers';
+import lazyImport from 'services/lazyImport';
 import { NotFound } from 'components';
 import DashboardRoutes from './Dashboard';
 
@@ -21,22 +16,22 @@ const Routes: Function = (): Element<any> => (
     <MainLayout
       exact={true}
       path="/"
-      component={Home}
+      component={lazyImport.containers('Home')}
     />
     <MainLayout
       exact={true}
       path="/about"
-      component={About}
+      component={lazyImport.containers('About')}
     />
     <AuthLayout
       exact={true}
       path="/login"
-      component={Login}
+      component={lazyImport.containers('Login')}
     />
     <AuthLayout
       exact={true}
       path="/signup"
-      component={Signup}
+      component={lazyImport.containers('Signup')}
     />
     <ProtectedLayout
       path="/dashboard"
