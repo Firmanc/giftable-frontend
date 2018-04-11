@@ -11,7 +11,6 @@ import lazyImport from 'services/lazyImport';
 import { NotFound } from 'components';
 import DashboardRoutes from './Dashboard';
 
-
 const Routes: Function = (): Element<any> => (
   <Switch>
     <MainLayout
