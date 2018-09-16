@@ -4,7 +4,9 @@ import {
   list,
   filter,
   conj,
+  isEmpty,
 } from 'mori';
+import { LOCATION_CHANGE } from 'react-router-redux';
 import { LOG_ADD, LOG_REMOVE } from 'src/constants/log';
 import { Action } from 'src/types/actions';
 import { Log } from 'src/types/logs';
@@ -23,6 +25,10 @@ export default (
         (log: Log): boolean => log.componentId !== action.payload.componentId,
         state,
       );
+    case LOCATION_CHANGE:
+      return isEmpty(state)
+        ? state
+        : filter((log: Log): boolean => !!log.persist, state);
     default:
       return state;
   }
