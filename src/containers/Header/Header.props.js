@@ -1,6 +1,6 @@
 // @flow
 
-import type { UserTypes } from 'types/users';
+import type { UserTypes } from 'src/types/users';
 
 export type HeaderProps = {
   isAuthenticated: boolean,

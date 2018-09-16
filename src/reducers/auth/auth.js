@@ -1,14 +1,14 @@
 // @flow
 
+import { vector } from 'mori';
 import {
   AUTH_SET,
   AUTH_LOGOUT,
-} from 'constants/auth';
-import { vector } from 'mori';
-import { REHYDRATE } from 'constants/persist';
-import { Action } from 'types/actions';
-import { Auth } from 'types/auths';
-import { deepFreeze } from 'utils';
+} from 'src/constants/auth';
+import { REHYDRATE } from 'src/constants/persist';
+import { Action } from 'src/types/actions';
+import { Auth } from 'src/types/auths';
+import { deepFreeze } from 'src/utils';
 
 const INITIAL_STATE: Object = {
   user: {},

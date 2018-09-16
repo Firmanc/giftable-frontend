@@ -1,8 +1,8 @@
 // @flow
 
-import { ajax } from 'rxjs/observable/dom/ajax';
-import { Observable, AjaxRequest } from 'rxjs';
-import { API_URL, API_VERSION } from 'constants/api';
+import { ajax } from 'rxjs/ajax';
+import type { Observable, AjaxRequest } from 'rxjs';
+import { API_URL, API_VERSION } from 'src/constants/api';
 
 const DEFAULT_HEADER: Object = {
   Accept: 'application/json',

@@ -4,13 +4,6 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CleanWebpackPlugin from 'clean-webpack-plugin';
 import UglifyJSPlugin from 'uglifyjs-webpack-plugin';
 
-const commonsChunkPlugin = new webpack.optimize.CommonsChunkPlugin({
-  name: 'vendor',
-  minChunks(module) {
-    return module.context && ~module.context.indexOf('node_modules');
-  },
-});
-
 const htmlWebpackPlugin = new HtmlWebpackPlugin({
   inject: true,
   template: path.resolve(__dirname, 'index.html'),
@@ -20,7 +13,7 @@ const htmlWebpackPlugin = new HtmlWebpackPlugin({
 const hotModuleReplacementPlugin = new webpack.HotModuleReplacementPlugin();
 const cleanWebpackPlugin = new CleanWebpackPlugin(['dist']);
 const uglifyJSPlugin = new UglifyJSPlugin();
-const babelPolyfill = 'babel-polyfill';
+const babelPolyfill = '@babel/polyfill';
 const main = './src/index.js';
 
 const serverConf = {
@@ -42,12 +35,10 @@ export default (env) => {
 
   const plugins = isDev ? [
     hotModuleReplacementPlugin,
-    commonsChunkPlugin,
     htmlWebpackPlugin,
     definePlugin,
   ] : [
     cleanWebpackPlugin,
-    commonsChunkPlugin,
     htmlWebpackPlugin,
     definePlugin,
     uglifyJSPlugin,
@@ -63,6 +54,7 @@ export default (env) => {
   ];
 
   return {
+    mode: isDev ? 'development' : 'production',
     entry: {
       bundle: files,
     },
@@ -92,12 +84,27 @@ export default (env) => {
         },
       ],
     },
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+          default: false,
+          commons: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendor',
+            chunks: 'all',
+          },
+        },
+      },
+    },
     devServer: isDev ? serverConf : {},
     resolve: {
       modules: [
         path.resolve(__dirname, 'dist'),
         'node_modules',
       ],
+      alias: {
+        src: path.resolve(__dirname, 'src'),
+      },
     },
     plugins,
   };

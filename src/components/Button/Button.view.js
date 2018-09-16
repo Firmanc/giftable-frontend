@@ -1,18 +1,32 @@
+/* eslint-disable react/button-has-type */
 // @flow
 
 import React, { type Element } from 'react';
-import { classModifiers } from 'utils';
+import { classModifiersGen } from 'src/utils';
 import type { ButtonProps } from './Button.props';
 
-export default (props: ButtonProps): Element<'button'> => (
+const typeGenerator: Object = {
+  button: 'button',
+  submit: 'submit',
+  reset: 'reset',
+};
+
+export default ({
+  id,
+  secondary,
+  classModifiers,
+  onClick,
+  children,
+  type,
+}: ButtonProps): Element<'button'> => (
   <button
-    id={props.id}
-    type={props.type || 'button'}
-    className={`button button${props.secondary
+    id={id}
+    type={typeGenerator[type] || typeGenerator.button}
+    className={`button button${secondary
       ? '--secondary'
-      : '--primary'} ${classModifiers('button', props.classModifiers)}`}
-    onClick={props.onClick}
+      : '--primary'} ${classModifiersGen('button', classModifiers)}`}
+    onClick={onClick}
   >
-    {props.children}
+    {children}
   </button>
 );

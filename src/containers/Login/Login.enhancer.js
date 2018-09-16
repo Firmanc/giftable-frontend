@@ -5,7 +5,7 @@ import {
   withState,
   withHandlers,
 } from 'recompose';
-import { Login } from 'types/auths';
+import { Login } from 'src/types/auths';
 import type { LoginProps } from './Login.props';
 
 const toLoginData: Function = (props: LoginProps): Login => ({
@@ -17,13 +17,9 @@ export default compose(
   withState('email', 'setEmail', ''),
   withState('password', 'setPassword', ''),
   withHandlers({
-    handleSubmit: (props: LoginProps): Function =>
-      (event: SyntheticEvent<HTMLButtonElement>) => {
-        event.preventDefault();
-        props.submitLogin(
-          toLoginData(props),
-          props.componentId,
-        );
-      },
+    handleSubmit: (props: LoginProps): Function => (event: SyntheticEvent<HTMLButtonElement>) => {
+      event.preventDefault();
+      props.submitLogin(toLoginData(props));
+    },
   }),
 );

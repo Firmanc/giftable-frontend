@@ -1,8 +1,8 @@
 // @flow
 
-import { LOG_ERROR, LOG_ADD, LOG_REMOVE } from 'constants/log';
-import { Action } from 'types/actions';
-import { Log } from 'types/logs';
+import { LOG_ERROR, LOG_ADD, LOG_REMOVE } from 'src/constants/log';
+import { Action } from 'src/types/actions';
+import { Log } from 'src/types/logs';
 
 const addErrorLog: Function = (message: string, componentId: string): Action<Log> => ({
   type: LOG_ADD,

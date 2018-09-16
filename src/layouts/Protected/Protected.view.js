@@ -18,12 +18,14 @@ const Protected: Function = ({
     {...rest}
     render={(matchProps: any): Element<any> => isAuthenticated
       ? <Component {...matchProps} />
-      : <Redirect
-        to={{
-          pathname: '/login',
-          state: { from: matchProps.location },
-        }}
-      />
+      : (
+        <Redirect
+          to={{
+            pathname: '/login',
+            state: { from: matchProps.location },
+          }}
+        />
+      )
     }
   />
 );

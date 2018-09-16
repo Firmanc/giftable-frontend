@@ -2,10 +2,16 @@
 
 import React, { type Element } from 'react';
 import { Link } from 'react-router-dom';
-import { MobileMenu } from 'components';
+import { MobileMenu } from 'src/components';
 import type { MobileNavProps } from './MobileNav.props';
 
-export default (props: MobileNavProps): Element<'div'> => (
+const MobileNav: Function = ({
+  setShowMenu,
+  showMenu,
+  currentUser = {},
+  isLoggedIn,
+  logout,
+}: MobileNavProps): Element<'div'> => (
   <div className="mobileNav">
     <nav className="mobileNav__leftNav">
       <Link className="mobileNav__link" to="/">
@@ -20,21 +26,25 @@ export default (props: MobileNavProps): Element<'div'> => (
       <button
         id="openMobileMenuBtn"
         className="mobileNav__menuButton"
-        onClick={props.setShowMenu}
+        onClick={setShowMenu}
+        type="button"
       >
         <i className="mobileNav__menuIcon" />
       </button>
     </nav>
-    <div className={`mobileNav__mobileMenu mobileNav__mobileMenu--${props.showMenu
+    <div className={`mobileNav__mobileMenu mobileNav__mobileMenu--${showMenu
       ? 'showMenu'
       : 'hideMenu'}`}
     >
-      <MobileMenu
-        setShowMenu={props.setShowMenu}
-        currentUser={props.currentUser}
-        isLoggedIn={props.isLoggedIn}
-        logout={props.logout}
+      <MobileMenu {...{
+        setShowMenu,
+        currentUser,
+        isLoggedIn,
+        logout,
+      }}
       />
     </div>
   </div>
 );
+
+export default MobileNav;

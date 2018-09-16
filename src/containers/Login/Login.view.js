@@ -1,8 +1,8 @@
 // @flow
 
 import React, { type Element } from 'react';
-import { Card, LoginForm } from 'components';
-import { Message } from 'containers';
+import { Card, LoginForm } from 'src/components';
+import { Message } from 'src/containers';
 import type { LoginProps } from './Login.props';
 
 export default (props: LoginProps): Element<'div'> => (

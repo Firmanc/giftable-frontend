@@ -7,16 +7,16 @@ import {
 } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { createEpicMiddleware } from 'redux-observable';
-import reducers from 'reducers';
 import { routerMiddleware } from 'react-router-redux';
-import { persistStore, persistReducer } from 'redux-persist';
+import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import createHistory from 'history/createBrowserHistory';
+import reducers from 'src/reducers';
 import epics from './epics';
 
 const isProd: boolean = String(process.env.NODE_ENV) === 'production';
 const composeEnhancers: Function = isProd ? compose : composeWithDevTools;
-const epicMiddleware: Object = createEpicMiddleware(epics);
+const epicMiddleware: Object = createEpicMiddleware();
 
 export const history: Object = createHistory();
 
@@ -33,9 +33,13 @@ const middlewares: Array<any> = [
 
 const persistedReducer: Object = persistReducer(persistConfig, reducers);
 
-export const store: Object = createStore(
-  persistedReducer,
-  composeEnhancers(applyMiddleware(...middlewares)),
-);
+export function configureStore(): Object {
+  const store: Object = createStore(
+    persistedReducer,
+    composeEnhancers(applyMiddleware(...middlewares)),
+  );
 
-export const persistor: Object = persistStore(store);
+  epicMiddleware.run(epics);
+
+  return store;
+}

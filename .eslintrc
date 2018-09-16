@@ -63,6 +63,9 @@
       "onlyFilesWithFlowAnnotation": true
     },
     "import/resolver": {
+      "node": {
+        "paths": ["."]
+      },
       "babel-module": {}
     }
   }

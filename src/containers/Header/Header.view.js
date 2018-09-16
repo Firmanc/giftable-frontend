@@ -1,7 +1,7 @@
 // @flow
 
 import React, { type Element } from 'react';
-import { TopNav, MobileNav } from 'components';
+import { TopNav, MobileNav } from 'src/components';
 import type { HeaderProps } from './Header.props';
 
 export default (props: HeaderProps): Element<'header'> => (

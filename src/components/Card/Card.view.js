@@ -3,8 +3,12 @@
 import React, { type Element } from 'react';
 import type { CardTypes } from './Card.props';
 
-export default (props: CardTypes): Element<'div'> => (
+const Card: Function = ({
+  children,
+}: CardTypes): Element<'div'> => (
   <div className="card">
-    {props.children}
+    {children}
   </div>
 );
+
+export default Card;

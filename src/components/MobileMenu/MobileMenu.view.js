@@ -4,14 +4,17 @@ import React, { type Element } from 'react';
 import { Link } from 'react-router-dom';
 import type { MobileMenuProps } from './MobileMenu.props';
 
-const UnauthNav: Function = (props: MobileMenuProps): Element<'div'> => (
+const UnauthNav: Function = ({
+  setShowMenu,
+}: MobileMenuProps): Element<'div'> => (
   <div className="mobileMenu">
     <header className="mobileMenu__header">
       <div className="mobileMenu__header__closeWrapper">
         <button
           id="closeMobileMenuBtn"
           className="mobileMenu__closeButton"
-          onClick={props.setShowMenu}
+          onClick={setShowMenu}
+          type="button"
         >
           <i className="mobileMenu__closeIcon" />
         </button>
@@ -21,21 +24,21 @@ const UnauthNav: Function = (props: MobileMenuProps): Element<'div'> => (
       <Link
         className="mobileMenu__link"
         to="/login"
-        onClick={props.setShowMenu}
+        onClick={setShowMenu}
       >
         log in
       </Link>
       <Link
         className="mobileMenu__link"
         to="/signup"
-        onClick={props.setShowMenu}
+        onClick={setShowMenu}
       >
         sign up
       </Link>
       <Link
         className="mobileMenu__link"
         to="/about"
-        onClick={props.setShowMenu}
+        onClick={setShowMenu}
       >
         about
       </Link>
@@ -43,14 +46,19 @@ const UnauthNav: Function = (props: MobileMenuProps): Element<'div'> => (
   </div>
 );
 
-const AuthNav: Function = (props: MobileMenuProps): Element<'div'> => (
+const AuthNav: Function = ({
+  setShowMenu,
+  currentUser = {},
+  logout,
+}: MobileMenuProps): Element<'div'> => (
   <div className="mobileMenu">
     <header className="mobileMenu__header">
       <div className="mobileMenu__header__closeWrapper">
         <button
           id="closeMobileMenuBtn"
           className="mobileMenu__closeButton"
-          onClick={props.setShowMenu}
+          onClick={setShowMenu}
+          type="button"
         >
           <i className="mobileMenu__closeIcon" />
         </button>
@@ -58,17 +66,17 @@ const AuthNav: Function = (props: MobileMenuProps): Element<'div'> => (
       <div className="mobileMenu__header__profileWrapper">
         <img
           className="mobileMenu__avatar"
-          src={props.currentUser.profileImage
-            ? props.currentUser.profileImage
+          src={currentUser.profileImage
+            ? currentUser.profileImage
             : 'assets/images/default-avatar.png'}
-          alt={props.currentUser.firstName}
+          alt={currentUser.firstName}
         />
         <span className="mobileMenu__userDetail">
           <p className="mobileMenu__userDetail__name">
-            {props.currentUser.fullName}
+            {currentUser.fullName}
           </p>
           <p className="mobileMenu__userDetail__email">
-            {props.currentUser.email}
+            {currentUser.email}
           </p>
         </span>
       </div>
@@ -77,7 +85,7 @@ const AuthNav: Function = (props: MobileMenuProps): Element<'div'> => (
       <Link
         className="mobileMenu__link"
         to="/"
-        onClick={props.setShowMenu}
+        onClick={setShowMenu}
       >
         create gift
       </Link>
@@ -85,15 +93,22 @@ const AuthNav: Function = (props: MobileMenuProps): Element<'div'> => (
     <footer className="mobileMenu__footer">
       <button
         className="mobileMenu__logoutButton"
-        onClick={props.logout}
+        onClick={logout}
+        type="button"
       >
-        log out <i className="mobileMenu__logoutButton__icon" />
+        log out
+        <i className="mobileMenu__logoutButton__icon" />
       </button>
     </footer>
   </div>
 );
 
-export default (props: MobileMenuProps): Element<any> =>
-  props.isLoggedIn
+const MobileMenu: Function = (props: MobileMenuProps): Element<any> => {
+  const { isLoggedIn }: { isLoggedIn: boolean } = props;
+
+  return isLoggedIn
     ? <AuthNav {...props} />
     : <UnauthNav {...props} />;
+};
+
+export default MobileMenu;
