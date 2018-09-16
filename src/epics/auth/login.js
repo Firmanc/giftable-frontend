@@ -1,6 +1,5 @@
 // @flow
 
-import 'rxjs/add/operator/mergeMap';
 import type { ActionsObservable, Observable } from 'rxjs';
 import { concat } from 'rxjs/observable/concat';
 import { of } from 'rxjs/observable/of';
@@ -31,10 +30,10 @@ const login: Function = (action$: ActionsObservable): Auth => action$.pipe(
         of(authActions.setAuth(toAuthData(payload.response))),
         of(push('/dashboard')),
       )),
-      catchError((error: Object): Observable => of(logActions.addErrorLog(
-        toErrorMessage(error.response),
-        LOGIN_CONTAINER,
-      ))),
+      catchError((error: Object): Observable => of(logActions.addErrorLog({
+        message: toErrorMessage(error.response),
+        componentId: LOGIN_CONTAINER,
+      }))),
     );
   }),
 );

@@ -58,6 +58,7 @@ export default (env) => {
     entry: {
       bundle: files,
     },
+    devtool: isDev ? 'inline-source-map' : false,
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: '[name].js',
