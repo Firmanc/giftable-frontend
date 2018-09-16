@@ -1,21 +1,21 @@
 {
   "presets": [
-    "react",
-    "es2015",
-    "flow",
-    "stage-0"
+    "@babel/preset-react",
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "browsers": [
+            "last 2 versions"
+          ]
+        }
+      }
+    ],
+    "@babel/preset-flow"
   ],
   "plugins": [
-    "transform-class-properties",
-    "syntax-dynamic-import",
-    "react-hot-loader/babel",
-    [
-      "module-resolver",
-      {
-        "root": [
-          "./src"
-        ]
-      }
-    ]
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-syntax-dynamic-import",
+    "react-hot-loader/babel"
   ]
 }

@@ -2,14 +2,16 @@
 
 import React, { type Element } from 'react';
 import { Switch } from 'react-router-dom';
-import { MainLayout } from 'layouts';
-import lazyImport from 'services/lazyImport';
+import { MainLayout } from 'src/layouts';
+import lazyImport from 'src/services/lazyImport';
 
-const DashboardRoutes: Function = (props: Object): Element<any> => (
+const DashboardRoutes: Function = ({
+  match = {},
+}: Object): Element<any> => (
   <Switch>
     <MainLayout
       exact={true}
-      path={props.match.path}
+      path={match.path}
       component={lazyImport.containers('Dashboard')}
     />
   </Switch>

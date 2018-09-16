@@ -3,7 +3,7 @@
 import React, { type Element } from 'react';
 import type { LoadingProps } from './Loading.props';
 
-const Loading: Function = (): Element<'div'> => (
+const LoadingIcon: Function = (): Element<'div'> => (
   <div className="loading">
     <div className="loading__icon">
       <div className="loading__icon__bounce1" />
@@ -20,10 +20,15 @@ const Error: Function = (): Element<'div'> => (
   </div>
 );
 
-export default (props: LoadingProps): ?Element<any> => {
-  if (props.error) return <Error />;
+const Loading: Function = ({
+  error,
+  pastDelay,
+}: LoadingProps): ?Element<any> => {
+  if (error) return <Error />;
 
-  if (props.pastDelay) return <Loading />;
+  if (pastDelay) return <LoadingIcon />;
 
   return null;
 };
+
+export default Loading;

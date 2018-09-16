@@ -2,10 +2,12 @@
 
 import React, { type Element } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, ProfileTile } from 'components';
+import { Button, ProfileTile } from 'src/components';
 import type { TopNavProps } from './TopNav.props';
 
-const UnauthNav: Function = (props: TopNavProps): Element<'nav'> => (
+const UnauthNav: Function = ({
+  toSignUpPage,
+}: TopNavProps): Element<'nav'> => (
   <nav className="topNav__rightNav">
     <Link className="topNav__link" to="/about">
       About
@@ -15,7 +17,7 @@ const UnauthNav: Function = (props: TopNavProps): Element<'nav'> => (
     </Link>
     <Button
       id="navSignupBtn"
-      onClick={props.toSignUpPage}
+      onClick={toSignUpPage}
       secondary={true}
     >
       Sign Up
@@ -23,7 +25,12 @@ const UnauthNav: Function = (props: TopNavProps): Element<'nav'> => (
   </nav>
 );
 
-const AuthNav: Function = (props: TopNavProps): Element<'nav'> => (
+const AuthNav: Function = ({
+  showMenu,
+  setShowMenu,
+  currentUser = {},
+  logout,
+}: TopNavProps): Element<'nav'> => (
   <nav className="topNav__rightNav">
     <Button
       id="createGiftBtn"
@@ -32,35 +39,42 @@ const AuthNav: Function = (props: TopNavProps): Element<'nav'> => (
       Create Gift
     </Button>
     <div
-      className={`topNav__avatarWrapper topNav__avatarWrapper--${props.showMenu
+      className={`topNav__avatarWrapper topNav__avatarWrapper--${showMenu
         ? 'showMenu'
         : 'hideMenu'}`}
     >
       <button
         id="openProfileMenuBtn"
         className="topNav__avatar"
-        onClick={props.setShowMenu}
+        onClick={setShowMenu}
         type="button"
       >
         <img
           className="topNav__avatar__image"
-          src={props.currentUser.profileImage
-            ? props.currentUser.profileImage
+          src={currentUser.profileImage
+            ? currentUser.profileImage
             : 'assets/images/default-avatar.png'}
-          alt={props.currentUser.firstName}
+          alt={currentUser.firstName}
         />
         <i className="topNav__avatar__arrow" />
       </button>
       <ProfileTile
-        currentUser={props.currentUser}
-        logout={props.logout}
+        currentUser={currentUser}
+        logout={logout}
       />
     </div>
   </nav>
 );
 
-export default (props: TopNavProps): Element<'div'> => (
-  <div className={`topNav topNav--${props.isLoggedIn
+const TopNav: Function = ({
+  isLoggedIn,
+  toSignUpPage,
+  showMenu,
+  setShowMenu,
+  currentUser = {},
+  logout,
+}: TopNavProps): Element<'div'> => (
+  <div className={`topNav topNav--${isLoggedIn
     ? 'auth'
     : 'unauth'}`}
   >
@@ -73,9 +87,16 @@ export default (props: TopNavProps): Element<'div'> => (
         />
       </Link>
     </nav>
-    {props.isLoggedIn
-      ? <AuthNav {...props} />
-      : <UnauthNav {...props} />
-    }
+    {isLoggedIn ? (
+      <AuthNav {...{
+        showMenu,
+        setShowMenu,
+        currentUser,
+        logout,
+      }}
+      />
+    ) : (<UnauthNav {...{ toSignUpPage }} />)}
   </div>
 );
+
+export default TopNav;

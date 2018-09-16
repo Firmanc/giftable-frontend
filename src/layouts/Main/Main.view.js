@@ -4,8 +4,8 @@ import React, {
   type Element,
   type StatelessFunctionalComponent,
 } from 'react';
-import { Header } from 'containers';
 import { Route } from 'react-router-dom';
+import { Header } from 'src/containers';
 
 const Main: Function = ({
   component: Component,

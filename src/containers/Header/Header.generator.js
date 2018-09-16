@@ -1,10 +1,10 @@
 // @flow
 
 import { connect } from 'react-redux';
-import { authActions } from 'actions';
-import authSeletors from 'selectors/auth';
+import { authActions } from 'src/actions';
+import authSeletors from 'src/selectors/auth';
 
-const mapStateToProps : Function = (): Function => {
+const mapStateToProps: Function = (): Function => {
   const checkIsAuthenticated: Function = authSeletors.makeCheckIsAuthenticated();
   const getAuthUser: Function = authSeletors.makeGetAuthUser();
 

@@ -4,16 +4,13 @@ import {
   AUTH_SET,
   AUTH_LOGIN,
   AUTH_LOGOUT,
-} from 'constants/auth';
-import { Action } from 'types/actions';
-import { Login, Auth } from 'types/auths';
+} from 'src/constants/auth';
+import { Action } from 'src/types/actions';
+import { Login, Auth } from 'src/types/auths';
 
-const login: Function = (formData: Login, componentId: string): Action<Login> => ({
+const login: Function = (formData: Login): Action<Login> => ({
   type: AUTH_LOGIN,
-  payload: {
-    ...formData,
-    componentId,
-  },
+  payload: { ...formData },
 });
 
 const logout: Function = (): Action<void> => ({

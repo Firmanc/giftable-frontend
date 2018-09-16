@@ -1,7 +1,7 @@
 // @flow
 
-import { Auth } from 'types/auths';
 import { vector } from 'mori';
+import { Auth } from 'src/types/auths';
 
 const toAuthData: Function = (response: Object): Auth => ({
   user: response.data.user,

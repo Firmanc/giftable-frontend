@@ -1,11 +1,11 @@
 // @flow
 
 import { connect } from 'react-redux';
-import { Log } from 'types/logs';
-import logSelectors from 'selectors/log';
-import { logActions } from 'actions';
+import { Log } from 'src/types/logs';
+import logSelectors from 'src/selectors/log';
+import { logActions } from 'src/actions';
 
-const mapStateToProps : Function = (): Function => {
+const mapStateToProps: Function = (): Function => {
   const getLogById: Function = logSelectors.makeGetLogById();
 
   return (state: Object, ownProps: Object): Object => ({

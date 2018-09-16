@@ -4,8 +4,8 @@ import React, {
   type Element,
   type StatelessFunctionalComponent,
 } from 'react';
-import { Header } from 'containers';
 import { Route, Redirect } from 'react-router-dom';
+import { Header } from 'src/containers';
 
 const Authentication: Function = ({
   component: Component,

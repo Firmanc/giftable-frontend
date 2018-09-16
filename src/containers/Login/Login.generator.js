@@ -1,18 +1,17 @@
 // @flow
 
 import { connect } from 'react-redux';
-import { authActions } from 'actions';
-import { Login } from 'types/auths';
-import { LOGIN_CONTAINER } from 'constants/containers';
+import { authActions } from 'src/actions';
+import { Login } from 'src/types/auths';
+import { LOGIN_CONTAINER } from 'src/constants/containers';
 
-const mapStateToProps : Function = (): Function =>
-  (): Object => ({
-    componentId: LOGIN_CONTAINER,
-  });
+const mapStateToProps: Function = (): Function => (): Object => ({
+  componentId: LOGIN_CONTAINER,
+});
 
 const mapDispatchToProps: Function = (dispatch: Function): Object => ({
-  submitLogin: (data: Login, componentId: string) => {
-    dispatch(authActions.login(data, componentId));
+  submitLogin: (data: Login) => {
+    dispatch(authActions.login(data));
   },
 });
 
