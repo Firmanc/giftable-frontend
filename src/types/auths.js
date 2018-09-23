@@ -12,9 +12,7 @@ export interface Login {
 export interface LoginReq {
   email: string,
   password: string,
-  componentId: string,
 }
-
 
 export interface Auth {
   user: UserTypes,

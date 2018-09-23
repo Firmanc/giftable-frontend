@@ -1,16 +1,8 @@
 // @flow
 
 import React, { type Element } from 'react';
+import { Spinner } from 'src/components';
 import type { LoadingProps } from './Loading.props';
-
-const LoadingIcon: Function = (): Element<'div'> => (
-  <div className="loading">
-    <div className="loading__icon">
-      <div className="loading__icon__bounce1" />
-      <div className="loading__icon__bounce2" />
-    </div>
-  </div>
-);
 
 const Error: Function = (): Element<'div'> => (
   <div className="loading">
@@ -26,7 +18,13 @@ const Loading: Function = ({
 }: LoadingProps): ?Element<any> => {
   if (error) return <Error />;
 
-  if (pastDelay) return <LoadingIcon />;
+  if (pastDelay) {
+    return (
+      <div className="loading">
+        <Spinner type="doubleBounce" />
+      </div>
+    );
+  }
 
   return null;
 };

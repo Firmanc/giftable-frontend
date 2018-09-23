@@ -3,6 +3,7 @@
 export type LoginProps = {
   id: string,
   handleSubmit: Function,
+  isLoggingIn: boolean,
   email: string,
   setEmail: Function,
   password: string,

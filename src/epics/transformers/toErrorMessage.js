@@ -2,6 +2,6 @@
 
 const toErrorMessage: Function = (response: ?Object): string => response
   ? response.message
-  : 'Server Error';
+  : 'Connection Error';
 
 export default toErrorMessage;
