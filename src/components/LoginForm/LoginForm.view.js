@@ -36,7 +36,7 @@ const LoginForm: Function = ({
       type="submit"
       onClick={onSubmit}
     >
-      {isLoggingIn ? <Spinner type="threeDots" /> : 'log in'}
+      {isLoggingIn ? <Spinner type="tripleBounce" /> : 'log in'}
     </Button>
   </form>
 );

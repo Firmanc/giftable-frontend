@@ -23,10 +23,10 @@ function postLogin(headers: string, url: string): Observable {
       of(authActions.setAuth(toAuthData(payload.response))),
       of(push('/dashboard')),
     )),
-    catchError((error: Object): Observable => of(logActions.addErrorLog(
-      toErrorMessage(error.response),
-      LOGIN_CONTAINER,
-    ))),
+    catchError((error: Object): Observable => of(logActions.addErrorLog({
+      message: toErrorMessage(error.response),
+      componentId: LOGIN_CONTAINER,
+    }))),
   );
 }
 
@@ -41,20 +41,7 @@ const login: Function = (action$: ActionsObservable): Auth => action$.pipe(
       Authorization: `Basic ${hash}`,
     };
 
-<<<<<<< HEAD
-    return API.post(url, { headers }).pipe(
-      mergeMap((payload: Object): Observable => concat(
-        of(authActions.setAuth(toAuthData(payload.response))),
-        of(push('/dashboard')),
-      )),
-      catchError((error: Object): Observable => of(logActions.addErrorLog({
-        message: toErrorMessage(error.response),
-        componentId: LOGIN_CONTAINER,
-      }))),
-    );
-=======
     return epicsProgressManager(AUTH_LOGIN, [postLogin(headers, url)]);
->>>>>>> e2eea16... Implemented progress state of the application
   }),
 );
 
