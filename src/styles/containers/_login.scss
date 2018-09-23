@@ -107,4 +107,13 @@
       @include button($ButtonConfig);
     }
   }
+
+  .spinner {
+    $SpinnerConfig: (
+      color: $white,
+      margin: 0 auto,
+    );
+
+    @include spinner($SpinnerConfig);
+  }
 }

@@ -5,18 +5,27 @@ import { Card, LoginForm } from 'src/components';
 import { Message } from 'src/containers';
 import type { LoginProps } from './Login.props';
 
-export default (props: LoginProps): Element<'div'> => (
-  <div id={props.componentId} className="login">
-    <Message componentId={props.componentId} />
+export default ({
+  componentId,
+  handleSubmit,
+  email,
+  password,
+  setEmail,
+  setPassword,
+  isLoggingIn,
+}: LoginProps): Element<'div'> => (
+  <div id={componentId} className="login">
+    <Message componentId={componentId} />
     <Card>
       <section className="login__formWrapper">
         <h1 className="login__header">log in</h1>
         <LoginForm
-          onSubmit={props.handleSubmit}
-          email={props.email}
-          password={props.password}
-          setEmail={props.setEmail}
-          setPassword={props.setPassword}
+          isLoggingIn={isLoggingIn}
+          onSubmit={handleSubmit}
+          email={email}
+          password={password}
+          setEmail={setEmail}
+          setPassword={setPassword}
         />
       </section>
     </Card>

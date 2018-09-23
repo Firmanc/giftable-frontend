@@ -1,10 +1,11 @@
 // @flow
 
 import React, { type Element } from 'react';
-import { Button, TextInput } from 'src/components';
+import { Button, TextInput, Spinner } from 'src/components';
 import type { LoginFormProps } from './LoginForm.props';
 
 const LoginForm: Function = ({
+  isLoggingIn,
   onSubmit,
   email,
   setEmail,
@@ -35,7 +36,7 @@ const LoginForm: Function = ({
       type="submit"
       onClick={onSubmit}
     >
-      log in
+      {isLoggingIn ? <Spinner type="threeDots" /> : 'log in'}
     </Button>
   </form>
 );
