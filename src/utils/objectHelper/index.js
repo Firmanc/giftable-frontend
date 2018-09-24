@@ -1,3 +1,5 @@
+// @flow
+
 import isAllValuesValid from './isAllValuesValid';
 
 export default ({
