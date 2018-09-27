@@ -1,7 +1,7 @@
 // @flow
 
 import { connect } from 'react-redux';
-import { Log } from 'src/types/logs';
+import type { Log } from 'src/types/logs';
 import logSelectors from 'src/selectors/log';
 import { logActions } from 'src/actions';
 

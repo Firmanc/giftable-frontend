@@ -48,7 +48,7 @@ const UnauthNav: Function = ({
 
 const AuthNav: Function = ({
   setShowMenu,
-  currentUser = {},
+  currentUser,
   logout,
 }: MobileMenuProps): Element<'div'> => (
   <div className="mobileMenu">

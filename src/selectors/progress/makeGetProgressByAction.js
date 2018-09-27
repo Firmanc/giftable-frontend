@@ -9,5 +9,5 @@ const getProgress: Function = (state: Object): Set<string> => state.progress;
 
 export default (actionId: string): Function => createSelector(
   [getProgress],
-  (progress: ?Array<string>): boolean => !!progress.get(actionId),
+  (progress: Set<string>): boolean => !!progress.get(actionId),
 );

@@ -1,12 +1,8 @@
 // @flow
 
+import type { LogRecord } from 'src/types/logs';
+
 export type MessageProps = {
-  log: {
-    message: string;
-    type: string;
-  },
-  componentId: string;
-  setShow: Function;
+  log: LogRecord;
   removeMessage: Function;
-  show: boolean;
 };
