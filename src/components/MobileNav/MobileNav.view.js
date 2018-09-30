@@ -8,7 +8,7 @@ import type { MobileNavProps } from './MobileNav.props';
 const MobileNav: Function = ({
   setShowMenu,
   showMenu,
-  currentUser = {},
+  currentUser,
   isLoggedIn,
   logout,
 }: MobileNavProps): Element<'div'> => (

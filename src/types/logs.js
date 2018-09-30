@@ -1,8 +1,19 @@
 // @flow
 
-export interface Log {
+import type { RecordOf } from 'immutable';
+
+export type Log = {
   message: string,
-  type: string,
+  type: ?string,
   componentId: string,
-  presist?: boolean,
+  persist: boolean,
+}
+
+export type LogRecord = RecordOf<Log>;
+
+export interface LogReq {
+  message: string,
+  type?: string,
+  componentId: string,
+  persist: boolean,
 }

@@ -1,34 +1,29 @@
 // @flow
 
-import {
-  list,
-  filter,
-  conj,
-  isEmpty,
-} from 'mori';
+import { List } from 'immutable';
 import { LOCATION_CHANGE } from 'react-router-redux';
 import { LOG_ADD, LOG_REMOVE } from 'src/constants/log';
+import { Log } from 'src/models';
 import { Action } from 'src/types/actions';
-import { Log } from 'src/types/logs';
+import type { LogRecord } from 'src/types/logs';
 
-const INITIAL_STATE: list<Log> = list();
+const INITIAL_STATE: List<LogRecord> = List();
 
 export default (
-  state: list<Log> = INITIAL_STATE,
-  action: Action<Log>,
-): list<Log> => {
+  state: List<LogRecord> = INITIAL_STATE,
+  action: Action<LogRecord>,
+): List<LogRecord> => {
   switch (action.type) {
     case LOG_ADD:
-      return conj(state, action.payload);
+      return state.push(Log(action.payload));
     case LOG_REMOVE:
-      return filter(
-        (log: Log): boolean => log.componentId !== action.payload.componentId,
-        state,
+      return state.filter(
+        (log: LogRecord): boolean => log.get('componentId') !== action.payload.get('componentId'),
       );
     case LOCATION_CHANGE:
-      return isEmpty(state)
+      return state.isEmpty()
         ? state
-        : filter((log: Log): boolean => !!log.persist, state);
+        : state.filter((log: LogRecord): boolean => !!log.get('persist'));
     default:
       return state;
   }

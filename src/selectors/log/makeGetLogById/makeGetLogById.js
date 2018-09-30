@@ -1,20 +1,15 @@
 // @flow
 
 import { createSelector } from 'reselect';
-import {
-  list,
-  filter,
-  isEmpty,
-  first,
-} from 'mori';
-import { Log } from 'src/types/logs';
+import type { List } from 'immutable';
+import type { LogRecord } from 'src/types/logs';
 
-const getComponentLog: Function = (state: Object, componentId: string): list<Log> => filter(
-  (log: Log): boolean => log.componentId === componentId,
-  state.log,
-);
+const getComponentLog: Function = (state: Object, componentId: string): List<LogRecord> => state.log
+  .filter(
+    (log: LogRecord): boolean => log.get('componentId') === componentId,
+  );
 
 export default (): Function => createSelector(
   [getComponentLog],
-  (logs: list<Log>): ?list<string> => !isEmpty(logs) && first(logs),
+  (logs: List<LogRecord>): ?LogRecord => logs.first(null),
 );

@@ -1,6 +1,6 @@
 // @flow
 
-import type { vector } from 'mori';
+import type { List } from 'immutable';
 import { RoleType } from './roles';
 import { UserTypes } from './users';
 
@@ -17,5 +17,5 @@ export interface LoginReq {
 export interface Auth {
   user: UserTypes,
   token: string,
-  roles: vector<RoleType>,
+  roles: List<RoleType>,
 }

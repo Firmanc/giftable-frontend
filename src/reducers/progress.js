@@ -1,28 +1,21 @@
 // @flow
 
-import {
-  list,
-  conj,
-  filter,
-} from 'mori';
+import { Set } from 'immutable';
 import { PROGRESS_SET, PROGRESS_DONE } from 'src/constants/progress';
 import { Action } from 'src/types/actions';
-import { Progress } from 'src/types/progress';
+import { type Progress } from 'src/types/progress';
 
-const INITIAL_STATE: list<string> = list();
+const INITIAL_STATE: Set<string> = new Set();
 
 export default (
-  state: list<string> = INITIAL_STATE,
+  state: Set<string> = INITIAL_STATE,
   action: Action<Progress>,
-): list<string> => {
+): Set<string> => {
   switch (action.type) {
     case PROGRESS_SET:
-      return conj(state, action.payload.actionId);
+      return state.add(action.payload.actionId);
     case PROGRESS_DONE:
-      return filter(
-        (actionId: string): boolean => actionId !== action.payload.actionId,
-        state,
-      );
+      return state.delete(action.payload.actionId);
     default:
       return state;
   }

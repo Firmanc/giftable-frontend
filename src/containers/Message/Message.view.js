@@ -1,6 +1,6 @@
 // @flow
 
-import React, { type Element } from 'react';
+import React from 'react';
 import type { MessageProps } from './Message.props';
 
 const messageActionTypes: Object = {
@@ -13,16 +13,17 @@ const messageActionTypes: Object = {
 const actionTypesGenerator: Function = (type: string): string => messageActionTypes[type]
   || messageActionTypes.LOG_INFO;
 
-export default (props: MessageProps): ?Element<'div'> => !!props.log && (
-  <div className={`message message--${actionTypesGenerator(props.log.type)}`}>
+export default ({
+  log,
+  removeMessage,
+}: MessageProps): any => !!log && (
+  <div className={`message message--${actionTypesGenerator(log.get('type'))}`}>
     <i className="message__icon" />
-    <p className="message__text">{props.log.message}</p>
+    <p className="message__text">{log.get('message')}</p>
     <button
       className="message__closeButton"
       type="button"
-      onClick={() => {
-        props.removeMessage(props.log);
-      }}
+      onClick={() => { removeMessage(log); }}
     >
       <i className="message__closeIcon" />
     </button>
