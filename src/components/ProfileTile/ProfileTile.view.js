@@ -5,7 +5,7 @@ import { Card } from 'src/components';
 import type { ProfileTileProps } from './ProfileTile.props';
 
 const ProfileTile: Function = ({
-  currentUser = {},
+  currentUser,
   logout,
 }: ProfileTileProps): Element<'div'> => (
   <div className="profileTile">

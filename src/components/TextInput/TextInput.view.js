@@ -1,12 +1,11 @@
 // @flow
 
 import React, { type Element } from 'react';
-import { vector } from 'mori';
 import { classModifiersGen } from 'src/utils';
 import type { TextInputProps } from './TextInput.props';
 
 const TextInput: Function = ({
-  classModifiers = vector(),
+  classModifiers = [],
   label,
   id,
   error,

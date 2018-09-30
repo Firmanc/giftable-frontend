@@ -28,7 +28,7 @@ const UnauthNav: Function = ({
 const AuthNav: Function = ({
   showMenu,
   setShowMenu,
-  currentUser = {},
+  currentUser,
   logout,
 }: TopNavProps): Element<'nav'> => (
   <nav className="topNav__rightNav">
@@ -71,7 +71,7 @@ const TopNav: Function = ({
   toSignUpPage,
   showMenu,
   setShowMenu,
-  currentUser = {},
+  currentUser,
   logout,
 }: TopNavProps): Element<'div'> => (
   <div className={`topNav topNav--${isLoggedIn

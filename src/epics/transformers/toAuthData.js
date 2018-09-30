@@ -1,12 +1,12 @@
 // @flow
 
-import { vector } from 'mori';
+import { List } from 'immutable';
 import { Auth } from 'src/types/auths';
 
 const toAuthData: Function = (response: Object): Auth => ({
   user: response.data.user,
   token: response.data.token,
-  roles: vector(response.data.roles),
+  roles: List(response.data.roles),
 });
 
 export default toAuthData;

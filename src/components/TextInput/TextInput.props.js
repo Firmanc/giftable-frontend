@@ -1,5 +1,4 @@
 // @flow
-import type { vector } from 'mori';
 
 export type TextInputProps = {
   id: string,
@@ -11,6 +10,6 @@ export type TextInputProps = {
   onChange: string => void,
   onBlur?: () => void,
   onFocus?: () => void,
-  classModifiers?: vector<string>,
+  classModifiers?: Array<string>,
   displayError?: boolean,
 }

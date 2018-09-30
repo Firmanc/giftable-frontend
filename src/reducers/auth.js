@@ -1,6 +1,6 @@
 // @flow
 
-import { vector } from 'mori';
+import { List } from 'immutable';
 import {
   AUTH_SET,
   AUTH_LOGOUT,
@@ -13,7 +13,7 @@ import { deepFreeze } from 'src/utils';
 const INITIAL_STATE: Object = {
   user: {},
   token: '',
-  roles: vector(),
+  roles: List(),
 };
 
 export default (
