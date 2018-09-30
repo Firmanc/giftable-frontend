@@ -14,7 +14,7 @@ const typeGenerator: Object = {
 export default ({
   id,
   secondary,
-  classModifiers,
+  classModifiers = [],
   onClick,
   children,
   type,
