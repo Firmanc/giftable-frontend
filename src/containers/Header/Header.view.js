@@ -4,26 +4,34 @@ import React, { type Element } from 'react';
 import { TopNav, MobileNav } from 'src/components';
 import type { HeaderProps } from './Header.props';
 
-export default (props: HeaderProps): Element<'header'> => (
+export default ({
+  isMobile,
+  handleShowMenu,
+  showMenu,
+  currentUser,
+  isAuthenticated,
+  onLogout,
+  history,
+}: HeaderProps): Element<'header'> => (
   <header className="header">
-    {props.isMobile ? (
+    {isMobile ? (
       <MobileNav
-        setShowMenu={props.handleShowMenu}
-        showMenu={props.showMenu}
-        currentUser={props.currentUser}
-        isLoggedIn={props.isAuthenticated}
-        logout={props.onLogout}
+        setShowMenu={handleShowMenu}
+        showMenu={showMenu}
+        currentUser={currentUser}
+        isLoggedIn={isAuthenticated}
+        logout={onLogout}
       />
     ) : (
       <TopNav
-        currentUser={props.currentUser}
+        currentUser={currentUser}
         toSignUpPage={() => {
-          props.history.push('/signup');
+          history.push('/signup');
         }}
-        isLoggedIn={props.isAuthenticated}
-        logout={props.onLogout}
-        showMenu={props.showMenu}
-        setShowMenu={props.handleShowMenu}
+        isLoggedIn={isAuthenticated}
+        logout={onLogout}
+        showMenu={showMenu}
+        setShowMenu={handleShowMenu}
       />
     )}
   </header>

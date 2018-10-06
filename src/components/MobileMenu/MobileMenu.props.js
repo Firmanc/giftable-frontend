@@ -6,4 +6,5 @@ export type MobileMenuProps = {
   setShowMenu: Function,
   currentUser: UserTypes,
   logout: Function,
+  isLoggedIn: boolean,
 };

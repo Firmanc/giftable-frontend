@@ -1,7 +1,7 @@
 // @flow
 
-import React from 'react';
-import { type SpinnerType } from './Spinner.props';
+import React, { type Element } from 'react';
+import { type SpinnerProps } from './Spinner.props';
 
 const TripleBounce: Function = (): Element<'div'> => (
   <div className="spinner spinner--tripleBounce">
@@ -21,13 +21,13 @@ const DoubleBounce: Function = (): Element<'div'> => (
 );
 
 const spinnerSelections: Object = {
-  doubleBounce: (): Element<'div'> => <DoubleBounce />,
-  tripleBounce: (): Element<'div'> => <TripleBounce />,
+  doubleBounce: (): Element<any> => <DoubleBounce />,
+  tripleBounce: (): Element<any> => <TripleBounce />,
 };
 
 const Spinner: Function = ({
   type,
-}: SpinnerType): Element<'div'> => {
+}: SpinnerProps): Element<'div'> => {
   const spinner: Function = spinnerSelections[type] || spinnerSelections.tripleBounce;
 
   return spinner();
