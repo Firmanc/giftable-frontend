@@ -6,4 +6,5 @@ export type LoginFormProps = {
   password: string,
   setEmail: Function,
   setPassword: Function,
+  isLoggingIn: boolean,
 };
